@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "parcel src/index.html",
-    "build": "rimraf docs && parcel build src/index.html -d docs"
+    "build": "parcel build src/index.html --public-url ./"
   },
   "devDependencies": {
     "elm": "^0.19.1-3",
