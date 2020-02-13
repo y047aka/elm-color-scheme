@@ -27,12 +27,48 @@ view =
                 , color = red
                 }
             , strips
-                { label = "Green"
-                , color = green
+                { label = "Pink"
+                , color = pink
+                }
+            , strips
+                { label = "Grape"
+                , color = grape
+                }
+            , strips
+                { label = "Violet"
+                , color = violet
                 }
             , strips
                 { label = "Blue"
                 , color = blue
+                }
+            , strips
+                { label = "LightBlue"
+                , color = lightBlue
+                }
+            , strips
+                { label = "Cyan"
+                , color = cyan
+                }
+            , strips
+                { label = "Teal"
+                , color = teal
+                }
+            , strips
+                { label = "Green"
+                , color = green
+                }
+            , strips
+                { label = "Lime"
+                , color = lime
+                }
+            , strips
+                { label = "Yellow"
+                , color = yellow
+                }
+            , strips
+                { label = "Orange"
+                , color = orange
                 }
             ]
         ]
@@ -48,7 +84,7 @@ strips ops =
         [ css
             [ display grid
             , gridTemplateColumns [ "1fr", "1fr", "1fr", "1fr", "1fr", "1fr", "1fr", "1fr", "1fr", "1fr" ]
-            , gridColumnGap (px 5)
+            , gridColumnGap (px 3)
             , adjacentSiblings
                 [ Css.Global.ul
                     [ marginTop (px 50) ]
@@ -74,7 +110,7 @@ strips ops =
                     , p
                         [ css
                             [ display block
-                            , paddingTop (px 10)
+                            , paddingTop (px 15)
                             , fontSize (px 14)
                             , lineHeight (int 1)
                             , textTransform uppercase
