@@ -1,7 +1,7 @@
 module Main exposing (main)
 
 import Browser exposing (Document)
-import Html exposing (main_, text)
+import Page.Top as Top
 
 
 main : Program () Model Msg
@@ -51,7 +51,5 @@ update msg model =
 view : Model -> Document Msg
 view _ =
     { title = ""
-    , body =
-        [ main_ [] [ text "elm-supercell" ]
-        ]
+    , body = Top.view
     }
