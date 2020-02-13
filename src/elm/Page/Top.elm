@@ -16,7 +16,7 @@ view =
         [ Css.ResetCss.resetCss
         , main_
             [ css
-                [ padding (px 50) ]
+                [ padding (px 100) ]
             ]
             [ strips
                 { label = "Gray"
@@ -51,7 +51,7 @@ strips ops =
             , gridColumnGap (px 5)
             , adjacentSiblings
                 [ Css.Global.ul
-                    [ marginTop (px 20) ]
+                    [ marginTop (px 50) ]
                 ]
             ]
         ]
@@ -60,14 +60,29 @@ strips ops =
                 li
                     [ css
                         [ display block
-                        , padding (px 10)
                         , listStyle none
-                        , backgroundColor (ops.color tone)
-                        , color (hex "#fff")
-                        , borderRadius (px 2)
                         ]
                     ]
-                    [ text <| ops.label ++ " " ++ String.fromInt tone ]
+                    [ div
+                        [ css
+                            [ height (px 50)
+                            , backgroundColor (ops.color tone)
+                            , borderRadius (px 2)
+                            ]
+                        ]
+                        []
+                    , p
+                        [ css
+                            [ display block
+                            , paddingTop (px 10)
+                            , fontSize (px 14)
+                            , lineHeight (int 1)
+                            , textTransform uppercase
+                            , color (hex "#555")
+                            ]
+                        ]
+                        [ text <| ops.label ++ " " ++ String.fromInt tone ]
+                    ]
             )
             [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
         )
