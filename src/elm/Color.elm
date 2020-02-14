@@ -75,8 +75,7 @@ pink l =
 normalize : Int -> Float
 normalize input =
     input
-        |> highCutOver 9
-        |> lowCutUnder 0
+        |> clamp 0 9
         |> (\n ->
                 case n of
                     0 ->
@@ -112,21 +111,3 @@ normalize input =
                     _ ->
                         0
            )
-
-
-highCutOver : Int -> Int -> Int
-highCutOver max n =
-    if n > max then
-        max
-
-    else
-        n
-
-
-lowCutUnder : Int -> Int -> Int
-lowCutUnder min n =
-    if n < min then
-        min
-
-    else
-        n
