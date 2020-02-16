@@ -21,17 +21,29 @@ view =
             (List.map strips
                 [ gray
                 , red
+                , pr
                 , pink
+                , mp
                 , magenta
+                , vm
                 , violet
+                , iv
                 , indigo
+                , bi
                 , blue
+                , cb
                 , cyan
+                , tc
                 , teal
+                , gt
                 , green
+                , lg
                 , lime
+                , yl
                 , yellow
+                , oy
                 , orange
+                , ro
                 ]
             )
         ]
