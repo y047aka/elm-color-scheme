@@ -1,4 +1,4 @@
-module Color exposing (HslaSpace, bi, blue, cb, cyan, darken, desaturate, gray, green, gt, hsla_, identity, indigo, iv, lg, lighten, lime, magenta, mp, orange, oy, pink, pr, red, ro, saturate, tc, teal, violet, vm, yellow, yl)
+module Color exposing (HslaSpace, bi, blue, cb, cyan, darken, desaturate, gray, green, gt, hsla_, indigo, iv, lg, lighten, lime, magenta, mp, orange, oy, pink, pr, red, ro, saturate, tc, teal, violet, vm, yellow, yl)
 
 import Css exposing (Color, hsla)
 
@@ -20,11 +20,6 @@ hsla_ { hue, saturation, lightness, alpha } =
 limit : Float -> Float
 limit =
     clamp 0 1
-
-
-identity : HslaSpace -> HslaSpace
-identity hslaSpace =
-    hslaSpace
 
 
 lighten : Float -> HslaSpace -> HslaSpace

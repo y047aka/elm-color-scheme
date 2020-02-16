@@ -18,39 +18,62 @@ view =
             [ css
                 [ padding (px 100) ]
             ]
-            (List.map strips
-                [ gray
-                , red
-                , pr
-                , pink
-                , mp
-                , magenta
-                , vm
-                , violet
-                , iv
-                , indigo
-                , bi
-                , blue
-                , cb
-                , cyan
-                , tc
-                , teal
-                , gt
-                , green
-                , lg
-                , lime
-                , yl
-                , yellow
-                , oy
-                , orange
-                , ro
-                ]
-            )
+            [ strips gray
+                [ -4.5, -4, -3, -2, -1, 0, 1, 2, 3 ]
+            , strips red
+                [ -4.5, -4, -3, -2, -1, 0, 1, 2, 3 ]
+            , strips pr
+                [ -4.5, -4, -3, -2, -1, 0, 1, 2, 3 ]
+            , strips pink
+                [ -4.5, -4, -3, -2, -1, 0, 1, 2, 3 ]
+            , strips mp
+                [ -4.5, -4, -3, -2, -1, 0, 1, 2, 3 ]
+            , strips magenta
+                [ -4.5, -4, -3, -2, -1, 0, 1, 2, 3 ]
+            , strips vm
+                [ -4.5, -4, -3, -2, -1, 0, 1, 2, 3 ]
+            , strips violet
+                [ -4.5, -4, -3, -2, -1, 0, 1, 2, 3 ]
+            , strips iv
+                [ -4.5, -4, -3, -2, -1, 0, 1, 2, 3 ]
+            , strips indigo
+                [ -4.5, -4, -3, -2, -1, 0, 1, 2, 3 ]
+            , strips bi
+                [ -4.5, -4, -3, -2, -1, 0, 1, 2, 3 ]
+            , strips blue
+                [ -4.5, -4, -3, -2, -1, 0, 1, 2, 3 ]
+            , strips cb
+                [ -4.5, -4, -3, -2, -1, 0, 1, 2, 3 ]
+            , strips cyan
+                [ -4.5, -4, -3, -2, -1, 0, 1, 2, 3 ]
+            , strips tc
+                [ -4.5, -4, -3, -2, -1, 0, 1, 2, 3 ]
+            , strips teal
+                [ -4.5, -4, -3, -2, -1, 0, 1, 2, 3 ]
+            , strips gt
+                [ -4.5, -4, -3, -2, -1, 0, 1, 2, 3 ]
+            , strips green
+                [ -4.5, -4, -3, -2, -1, 0, 1, 2, 3 ]
+            , strips lg
+                [ -4.5, -4, -3, -2, -1, 0, 1, 2, 3 ]
+            , strips lime
+                [ -4.5, -4, -3, -2, -1, 0, 1, 2, 3 ]
+            , strips yl
+                [ -4.5, -4, -3, -2, -1, 0, 1, 2, 3 ]
+            , strips yellow
+                [ -4.5, -4, -3, -2, -1, 0, 1, 2, 3 ]
+            , strips oy
+                [ -4.5, -4, -3, -2, -1, 0, 1, 2, 3 ]
+            , strips orange
+                [ -4.5, -4, -3, -2, -1, 0, 1, 2, 3 ]
+            , strips ro
+                [ -4.5, -4, -3, -2, -1, 0, 1, 2, 3 ]
+            ]
         ]
 
 
-strips : HslaSpace -> Html msg
-strips hslaSpace =
+strips : HslaSpace -> List Float -> Html msg
+strips hslaSpace array =
     ul
         [ css
             [ display grid
@@ -63,7 +86,7 @@ strips hslaSpace =
             ]
         ]
         (List.map
-            (\tone ->
+            (\v ->
                 li
                     [ css
                         [ display block
@@ -73,7 +96,7 @@ strips hslaSpace =
                     [ div
                         [ css
                             [ height (px 50)
-                            , backgroundColor (hsla_ <| tone.manipulate <| hslaSpace)
+                            , backgroundColor (hsla_ <| Color.darken v <| hslaSpace)
                             , borderRadius (px 2)
                             ]
                         ]
@@ -88,36 +111,17 @@ strips hslaSpace =
                             , color (hex "#555")
                             ]
                         ]
-                        [ text <| hslaSpace.value ++ " " ++ tone.label
+                        [ text <|
+                            if v > 0 then
+                                hslaSpace.value ++ " +" ++ String.fromFloat v
+
+                            else if v == 0 then
+                                hslaSpace.value
+
+                            else
+                                hslaSpace.value ++ " " ++ String.fromFloat v
                         ]
                     ]
             )
-            [ { label = "-4.5"
-              , manipulate = Color.darken -4.5
-              }
-            , { label = "-4"
-              , manipulate = Color.darken -4
-              }
-            , { label = "-3"
-              , manipulate = Color.darken -3
-              }
-            , { label = "-2"
-              , manipulate = Color.darken -2
-              }
-            , { label = "-1"
-              , manipulate = Color.darken -1
-              }
-            , { label = ""
-              , manipulate = Color.identity
-              }
-            , { label = "+1"
-              , manipulate = Color.darken 1
-              }
-            , { label = "+2"
-              , manipulate = Color.darken 2
-              }
-            , { label = "+3"
-              , manipulate = Color.darken 3
-              }
-            ]
+            array
         )
