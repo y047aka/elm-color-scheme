@@ -1,4 +1,4 @@
-module Color exposing (HslaSpace, blue, cyan, darken, desaturate, gray, green, hsla_, indigo, lighten, lime, magenta, orange, pink, red, saturate, teal, violet, yellow)
+module Color exposing (HslaSpace, blue, cyan, darken, desaturate, gray, green, hsla_, lighten, lime, magenta, orange, pink, red, saturate, sky, teal, violet, yellow)
 
 import Css exposing (Color, hsla)
 
@@ -91,14 +91,14 @@ cyan =
     primaryColor 180 "cyan"
 
 
+sky : HslaSpace
+sky =
+    primaryColor 210 "sky"
+
+
 blue : HslaSpace
 blue =
-    primaryColor 210 "blue"
-
-
-indigo : HslaSpace
-indigo =
-    primaryColor 240 "indigo"
+    primaryColor 240 "blue"
 
 
 violet : HslaSpace
