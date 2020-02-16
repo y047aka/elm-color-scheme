@@ -22,7 +22,7 @@ view =
                 [ gray
                 , red
                 , pink
-                , grape
+                , magenta
                 , violet
                 , indigo
                 , blue

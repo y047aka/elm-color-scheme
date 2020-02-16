@@ -1,4 +1,4 @@
-module Color exposing (HslaSpace, blue, cyan, darken, desaturate, grape, gray, green, hsla_, identity, indigo, lighten, lime, orange, pink, red, saturate, teal, violet, yellow)
+module Color exposing (HslaSpace, blue, cyan, darken, desaturate, gray, green, hsla_, identity, indigo, lighten, lime, magenta, orange, pink, red, saturate, teal, violet, yellow)
 
 import Css exposing (Color, hsla)
 
@@ -111,9 +111,9 @@ violet =
     primaryColor 270 "violet"
 
 
-grape : HslaSpace
-grape =
-    primaryColor 300 "grape"
+magenta : HslaSpace
+magenta =
+    primaryColor 300 "magenta"
 
 
 pink : HslaSpace
