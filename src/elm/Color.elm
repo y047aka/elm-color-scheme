@@ -1,109 +1,121 @@
-module Color exposing (blue, cyan, grape, gray, green, lightBlue, lime, orange, pink, red, teal, violet, yellow)
+module Color exposing (HslaSpace, blue, cyan, darken, desaturate, grape, gray, green, hsla_, identity, indigo, lighten, lime, orange, pink, red, saturate, teal, violet, yellow)
 
-import Css exposing (Color, hsl)
-
-
-gray : Int -> Color
-gray l =
-    hsl 0 0 (normalize l)
+import Css exposing (Color, hsla)
 
 
-red : Int -> Color
-red l =
-    hsl 0 1 (normalize l)
+type alias HslaSpace =
+    { hue : Float
+    , saturation : Float
+    , lightness : Float
+    , alpha : Float
+    , value : String
+    }
 
 
-orange : Int -> Color
-orange l =
-    hsl 30 1 (normalize l)
+hsla_ : HslaSpace -> Color
+hsla_ { hue, saturation, lightness, alpha } =
+    hsla hue saturation lightness alpha
 
 
-yellow : Int -> Color
-yellow l =
-    hsl 60 1 (normalize l)
+limit : Float -> Float
+limit =
+    clamp 0 1
 
 
-lime : Int -> Color
-lime l =
-    hsl 90 1 (normalize l)
+identity : HslaSpace -> HslaSpace
+identity hslaSpace =
+    hslaSpace
 
 
-green : Int -> Color
-green l =
-    hsl 120 1 (normalize l)
+lighten : Float -> HslaSpace -> HslaSpace
+lighten offset cl =
+    { cl | lightness = limit (cl.lightness + (offset * 0.1)) }
 
 
-teal : Int -> Color
-teal l =
-    hsl 150 1 (normalize l)
+darken : Float -> HslaSpace -> HslaSpace
+darken offset cl =
+    lighten -offset cl
 
 
-cyan : Int -> Color
-cyan l =
-    hsl 180 1 (normalize l)
+saturate : Float -> HslaSpace -> HslaSpace
+saturate offset cl =
+    { cl | saturation = limit (cl.saturation + offset) }
 
 
-lightBlue : Int -> Color
-lightBlue l =
-    hsl 210 1 (normalize l)
+desaturate : Float -> HslaSpace -> HslaSpace
+desaturate offset cl =
+    saturate -offset cl
 
 
-blue : Int -> Color
-blue l =
-    hsl 240 1 (normalize l)
-
-
-violet : Int -> Color
-violet l =
-    hsl 270 1 (normalize l)
-
-
-grape : Int -> Color
-grape l =
-    hsl 300 1 (normalize l)
-
-
-pink : Int -> Color
-pink l =
-    hsl 330 1 (normalize l)
+gray : HslaSpace
+gray =
+    HslaSpace 0 0 0.5 1 "gray"
 
 
 
--- HELPERS
+-- PRIMARY COLORS
 
 
-normalize : Int -> Float
-normalize input =
-    input
-        |> clamp 0 9
-        |> (-) 9
-        |> toFloat
-        |> (*) 0.1
+primaryColor : Float -> String -> HslaSpace
+primaryColor hue colorName =
+    HslaSpace hue 1 0.5 1 colorName
 
 
+red : HslaSpace
+red =
+    primaryColor 0 "red"
 
--- |> (\n ->
---         case n of
---             0 ->
---                 0.95
---             1 ->
---                 0.9
---             2 ->
---                 0.85
---             3 ->
---                 0.8
---             4 ->
---                 0.7
---             5 ->
---                 0.6
---             6 ->
---                 0.5
---             7 ->
---                 0.4
---             8 ->
---                 0.3
---             9 ->
---                 0.2
---             _ ->
---                 0
---    )
+
+orange : HslaSpace
+orange =
+    primaryColor 30 "orange"
+
+
+yellow : HslaSpace
+yellow =
+    primaryColor 60 "yellow"
+
+
+lime : HslaSpace
+lime =
+    primaryColor 90 "lime"
+
+
+green : HslaSpace
+green =
+    primaryColor 120 "green"
+
+
+teal : HslaSpace
+teal =
+    primaryColor 150 "teal"
+
+
+cyan : HslaSpace
+cyan =
+    primaryColor 180 "cyan"
+
+
+blue : HslaSpace
+blue =
+    primaryColor 210 "blue"
+
+
+indigo : HslaSpace
+indigo =
+    primaryColor 240 "indigo"
+
+
+violet : HslaSpace
+violet =
+    primaryColor 270 "violet"
+
+
+grape : HslaSpace
+grape =
+    primaryColor 300 "grape"
+
+
+pink : HslaSpace
+pink =
+    primaryColor 330 "pink"

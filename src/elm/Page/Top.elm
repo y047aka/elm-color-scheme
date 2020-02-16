@@ -18,72 +18,31 @@ view =
             [ css
                 [ padding (px 100) ]
             ]
-            [ strips
-                { label = "Gray"
-                , color = gray
-                }
-            , strips
-                { label = "Red"
-                , color = red
-                }
-            , strips
-                { label = "Pink"
-                , color = pink
-                }
-            , strips
-                { label = "Grape"
-                , color = grape
-                }
-            , strips
-                { label = "Violet"
-                , color = violet
-                }
-            , strips
-                { label = "Blue"
-                , color = blue
-                }
-            , strips
-                { label = "LightBlue"
-                , color = lightBlue
-                }
-            , strips
-                { label = "Cyan"
-                , color = cyan
-                }
-            , strips
-                { label = "Teal"
-                , color = teal
-                }
-            , strips
-                { label = "Green"
-                , color = green
-                }
-            , strips
-                { label = "Lime"
-                , color = lime
-                }
-            , strips
-                { label = "Yellow"
-                , color = yellow
-                }
-            , strips
-                { label = "Orange"
-                , color = orange
-                }
-            ]
+            (List.map strips
+                [ gray
+                , red
+                , pink
+                , grape
+                , violet
+                , indigo
+                , blue
+                , cyan
+                , teal
+                , green
+                , lime
+                , yellow
+                , orange
+                ]
+            )
         ]
 
 
-strips :
-    { label : String
-    , color : Int -> Color
-    }
-    -> Html msg
-strips ops =
+strips : HslaSpace -> Html msg
+strips hslaSpace =
     ul
         [ css
             [ display grid
-            , gridTemplateColumns [ "1fr", "1fr", "1fr", "1fr", "1fr", "1fr", "1fr", "1fr", "1fr", "1fr" ]
+            , gridTemplateColumns [ "1fr", "1fr", "1fr", "1fr", "1fr", "1fr", "1fr", "1fr", "1fr" ]
             , gridColumnGap (px 3)
             , adjacentSiblings
                 [ Css.Global.ul
@@ -102,7 +61,7 @@ strips ops =
                     [ div
                         [ css
                             [ height (px 50)
-                            , backgroundColor (ops.color tone)
+                            , backgroundColor (hsla_ <| tone.manipulate <| hslaSpace)
                             , borderRadius (px 2)
                             ]
                         ]
@@ -117,8 +76,36 @@ strips ops =
                             , color (hex "#555")
                             ]
                         ]
-                        [ text <| ops.label ++ " " ++ String.fromInt tone ]
+                        [ text <| hslaSpace.value ++ " " ++ tone.label
+                        ]
                     ]
             )
-            [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+            [ { label = "-3"
+              , manipulate = Color.lighten -3
+              }
+            , { label = "-2"
+              , manipulate = Color.lighten -2
+              }
+            , { label = "-1"
+              , manipulate = Color.lighten -1
+              }
+            , { label = ""
+              , manipulate = Color.identity
+              }
+            , { label = "+1"
+              , manipulate = Color.lighten 1
+              }
+            , { label = "+2"
+              , manipulate = Color.lighten 2
+              }
+            , { label = "+3"
+              , manipulate = Color.lighten 3
+              }
+            , { label = "+4"
+              , manipulate = Color.lighten 4
+              }
+            , { label = "+4.5"
+              , manipulate = Color.lighten 4.5
+              }
+            ]
         )
