@@ -92,32 +92,32 @@ strips hslaSpace =
                         ]
                     ]
             )
-            [ { label = "-3"
-              , manipulate = Color.lighten -3
+            [ { label = "-4.5"
+              , manipulate = Color.darken -4.5
+              }
+            , { label = "-4"
+              , manipulate = Color.darken -4
+              }
+            , { label = "-3"
+              , manipulate = Color.darken -3
               }
             , { label = "-2"
-              , manipulate = Color.lighten -2
+              , manipulate = Color.darken -2
               }
             , { label = "-1"
-              , manipulate = Color.lighten -1
+              , manipulate = Color.darken -1
               }
             , { label = ""
               , manipulate = Color.identity
               }
             , { label = "+1"
-              , manipulate = Color.lighten 1
+              , manipulate = Color.darken 1
               }
             , { label = "+2"
-              , manipulate = Color.lighten 2
+              , manipulate = Color.darken 2
               }
             , { label = "+3"
-              , manipulate = Color.lighten 3
-              }
-            , { label = "+4"
-              , manipulate = Color.lighten 4
-              }
-            , { label = "+4.5"
-              , manipulate = Color.lighten 4.5
+              , manipulate = Color.darken 3
               }
             ]
         )
