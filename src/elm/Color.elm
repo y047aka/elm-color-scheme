@@ -1,4 +1,4 @@
-module Color exposing (HslaSpace, blue, cyan, darken, desaturate, gray, green, hsla_, lighten, lime, magenta, orange, pink, red, rotateHue, saturate, sky, teal, violet, yellow)
+module Color exposing (HslaSpace, blue, cyan, darken, desaturate, gray, green, hsla_, lighten, lime, magenta, orange, pink, red, rotateHue, saturate, setColorName, sky, teal, violet, yellow)
 
 import Css exposing (Color, hsla)
 
@@ -45,6 +45,11 @@ desaturate offset cl =
 rotateHue : Float -> HslaSpace -> HslaSpace
 rotateHue degrees cl =
     { cl | hue = cl.hue + degrees }
+
+
+setColorName : String -> HslaSpace -> HslaSpace
+setColorName value cl =
+    { cl | value = value }
 
 
 gray : HslaSpace
