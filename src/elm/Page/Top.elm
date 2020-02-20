@@ -54,7 +54,6 @@ strips hslaSpace array =
         [ css
             [ display grid
             , gridTemplateColumns [ "1fr", "1fr", "1fr", "1fr", "1fr", "1fr", "1fr", "1fr", "1fr" ]
-            , gridColumnGap (px 3)
             , adjacentSiblings
                 [ Css.Global.ul
                     [ marginTop (px 50) ]
@@ -73,7 +72,6 @@ strips hslaSpace array =
                         [ css
                             [ height (px 50)
                             , backgroundColor (hsla_ <| Color.darken v <| hslaSpace)
-                            , borderRadius (px 2)
                             ]
                         ]
                         []
