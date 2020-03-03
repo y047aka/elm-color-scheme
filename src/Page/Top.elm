@@ -3,7 +3,7 @@ module Page.Top exposing (view)
 import Css exposing (..)
 import Css.Extra exposing (..)
 import Css.Global exposing (adjacentSiblings)
-import Css.ResetCss
+import Css.Reset.Customized exposing (customizedResetCss)
 import HslaColor exposing (..)
 import HslaColor.Manipulate as HslaColor exposing (rotateHue)
 import Html
@@ -14,7 +14,7 @@ import Html.Styled.Attributes exposing (css)
 view : List (Html.Html msg)
 view =
     List.map toUnstyled
-        [ Css.ResetCss.resetCss
+        [ customizedResetCss
         , main_
             [ css
                 [ padding (px 100) ]
