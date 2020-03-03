@@ -2,7 +2,7 @@ module Css.Reset.Customized exposing (customizedResetCss)
 
 import Css exposing (..)
 import Css.Global exposing (..)
-import Css.Reset.Ress exposing (ress)
+import Css.Reset exposing (ress)
 import Html.Styled exposing (Html)
 
 
