@@ -104,6 +104,6 @@ hsla_ : HslaColor -> Color
 hsla_ hslaColor =
     let
         { hue, saturation, lightness, alpha } =
-            HslaColor.toHsla hslaColor
+            toHsla hslaColor
     in
     Css.hsla (hue * 360) saturation lightness alpha
